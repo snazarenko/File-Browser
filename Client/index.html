@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="FileBrowserApp">
+<head>
+    <meta charset="UTF-8">
+    <title>File Browser Apllication</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+
+    <script src="scripts/lib/angular.js"></script>
+    <script src="scripts/app/controllers.js"></script>
+    <script src="scripts/app/factories.js"></script>
+</head>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <body ng-controller="defaultCtrl">
+                <table class="table table-condensed" ng-show="folderIsRoot(currentFolder)">
+                    <thead>
+                    <th>Less 10Mb</th>
+                    <th>10Mb-50Mb</th>
+                    <th>More 100Mb</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td <tr class="success">{{sizes[0]}}</td>
+                            <td <tr class="success">{{sizes[1]}}</td>
+                            <td <tr class="success">{{sizes[2]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
+
+
+                <span ng-show="folderIsRoot(currentFolder)"><strong>Current path: </strong>{{currentFolder}}</span>
+                <div class="brdr">
+                <div ng-show="folderIsRoot(currentFolder)">
+                    <a href ng-click="moveBack(currentFolder)"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></a>
+                </div>
+                <div ng-repeat="item in DirModelList">
+                    <a href ng-click="getCurrentFolder((currentFolder == '' ? currentFolder : currentFolder + '\\') + item.DirName)">{{item.DirName}}</a>
+                </div>
+                <div ng-repeat="item in FileModelList">
+                    <span>{{item.Name}}</span>
+                </div>
+                    </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
